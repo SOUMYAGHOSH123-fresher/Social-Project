@@ -1,0 +1,43 @@
+#latest-launch{
+    border-width: 15px 5px;
+    border-style: solid;
+    border-color: green;
+    font-size: 40px;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    /* padding-top:0px */
+    padding: 20px;
+    margin-left: 20%; 
+    margin-right: 20%;
+    border-radius: 15px;
+    text-align: center;
+}
+
+#upcoming-launch{
+    border-width: 15px 5px;
+    border-style: solid;
+    border-color: green;
+    font-size: 40px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    padding: 20px;
+    margin-left: 20%; 
+    margin-right: 20%;
+    border-radius: 15px;
+    text-align: center;
+}
+
+#upcoming-sales{
+    border-width: 15px 5px;
+    border-style: solid;
+    border-color: green;
+    font-size: 40px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    padding: 20px;
+    margin-left: 20%; 
+    margin-right: 20%;
+    border-radius: 15px;
+    text-align: center;
+}
+
