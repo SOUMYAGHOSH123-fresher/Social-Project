@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="Amazon-styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script type="text/javascript">
+        function loadPage(pageName) {
+           const contentDiv = document.getElementById("header");
+           const xhttp = new XMLHttpRequest();
+           xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                 contentDiv.innerHTML = this.responseText;
+              }
+           };
+           xhttp.open("GET", pageName + ".html", true);
+           xhttp.send();
+       }
+    </script>
+
+</head>
+
+<body>
+    
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark text-white">
+        <div class="container-fluid" id="navbarNav">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="#">
+                        <img src="Amazon-logo.png" alt="Amazon Logo" width="150px" height="60px" class="mx-auto d-block">
+                    </a>
+                </div>
+                <div class="col-md-2 mt-2 mb-1">
+                    <a href="#" class="text-decoration-none text-center text-white">
+                        <p class="lead h5 ps-2 mx-2" id="update_location">update loocation</p>
+                    </a>
+                </div>
+                <div class="col-lg-5">
+                    <form class="d-flex mx-auto d-block mt-3"  role="search">                 
+                        <input class="form-control" size="400px" type="search"  placeholder="Search what you want" aria-label="Search">
+                            <button class="btn btn-lg btn-info" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="col-lg-1 mt-3">
+                    <select title="Language" class="text-center  text-black h4 " id="select-lang"> 
+                        <option><i class="fa fa-flag"></i>Lang </option>
+                        <option>Hindi</option>
+                        <option>Telgu</option>
+                        <option>English</option>
+                        <option>marathi</option>
+                        <option>Bangali</option>
+                        <option>more</option>
+                    </select>
+                </div>
+                <div class="col-lg-1 text-center">
+                    <a href="C:\Users\sourav ghosh\OneDrive\Desktop\2nd semester program\bootstrap_login_page\bootstrap login_page.html" class="text-decoration-none">
+                        <p class="m-2 h5 p-2 text-white border">Login In</p>
+                    </a>
+                    
+                </div>
+                <div class="col-lg-1 text-center ">
+                    <a title="cart" href="#" class="text-decoration-none float-right">
+                        <p class="m-2 h2 p-2 text-white" ><i class="fa fa-cart-plus"></i></p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+                 
+    <header class="sticky-top" id="header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-secondary text-white"
+             aria-expanded="false" >
+            <div class="container-fluid">
+                    <ul class="navbar-nav h5 bg-secondary text-center">
+                        <li class="nav-item">
+                            <a class="nav-link text-white btn py-0" 
+                                type="button" id="items"
+                                data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasScrolling"
+                                aria-controls="offcanvasScrolling" 
+                                href="#">&equiv;</a>
+                                
+                        </li>
+                        <li class="nav-item px-2 ">
+                            <a class="nav-link text-center text-white h5" data-bs-target="#all_Content"  href="#">Home</a>
+                        </li>
+                        <li class="nav-item px-2 ">
+                            <a class="nav-link text-center text-white h5"  href="#">Mini Tv</a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a class="nav-link text-center text-white h5" href="#">Sell</a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a class="nav-link text-center text-white h5" href="#">Best seller</a>
+                        </li>
+                        <li class="nav-item px-2" >
+                            <a class="nav-link text-center text-white h5"
+                               href="D:\PROJECT\amazon\amazon\MObiles.html"
+                               aria-current="page" 
+                               role="link" 
+                               aria-expanded="false"
+                               >Mobiles</a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a class="nav-link text-center text-white h5" href="#">Today's Deals</a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a class="nav-link text-center text-white h5" href="#">Electronics</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Prime's</a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Link</a></li>
+                              <li><a class="dropdown-item" href="#">Another link</a></li>
+                              <li><a class="dropdown-item" href="#">A third link</a></li>
+                            </ul>
+                          </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-center text-white" href="#">Shop by Category</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-center text-white h6" href="#"><i class="fa fa-gear-fill"></i>Help & Settings</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="offcanvas offcanvas-start"
+         data-bs-scroll="true"
+         tabindex="-1" 
+         data-bs-backdrop="false"
+         id="offcanvasScrolling" 
+         aria-labelledby="offcanvasScrollingLabel"
+        >
+
+        <div class="offcanvas-header text-center bg-info text-white">
+            <h5 class="offcanvas-title px-3" 
+                id="offcanvasWithBackdropLabel">
+                Hello soumya
+            </h5>
+            <button type="button" class="btn-close text-reset" 
+                data-bs-dismiss="offcanvas" 
+                aria-label="Close">
+            </button>
+        </div>
+        <div class="offcanvas-body">
+          <p>
+            <ul class="list-unstyled text-dark h5 p-2 text-striped">
+                <li><a href="#">Amazon Devices</a></li>
+                <li><a href="#">Electronics</a></li>
+                <li><a href="#">Computers</a></li>
+                <li><a href="#">Smart Home</a></li>
+                <li><a href="#">Books</a></li>
+                <li><a href="#">Clothing, Shoes & Jewelry</a></li>
+                <li><a href="#">Home & Kitchen</a></li>
+                <li><a href="#">Beauty & Personal Care</a></li>
+                <li><a href="#">Health & Household</a></li>
+                <li><a href="#">Toys & Games</a></li>
+                <li><a href="#">Automotive</a></li>
+                <li><a href="#">Sports & Outdoors</a></li>
+                <li><a href="#">Pet Supplies</a></li>
+                <li><a href="#">Garden & Outdoor</a></li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    <!-- <div class="h5" style="display:none; " id="user_login">
+        <form class="border border-info" style="padding: 2px;">
+            <tr>
+                <div class="h3">Lodin Details of Users</div>
+            </tr>
+            <h2></h2>
+            <tr>
+                <td class="form-label" id="email_label"> Email :</td>
+                <td>
+                    <input type="email"
+                           class="form-control"
+                           id="user_email"
+                           placeholder="Enter Email">
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="form-label" id="pass_label">Password :</td>
+                <td>
+                    <input type="password"
+                           class="form-control"  
+                           placeholder="enter password"
+                           id="user_pass" >
+                </td>              
+            </tr>
+            <tr>
+                <td class="form-label" id="phone_label">Phone Number:</td>   
+                <td>
+                    <input type="text"
+                           class="form-control"
+                           id="user_phone"
+                           placeholder="Enter phone Number" >
+                </td>
+            </tr>
+            <tr>
+                <td class="form-label" id="lang_label">Language :</td>
+                <td>
+                    <select class="form-select" id="user_lang">
+                        <option class="active">select</option>
+                        <option>Hindi</option>
+                        <option>English</option>
+                        <option>ODIA</option>
+                        <option>Bengali</option>
+                        <option>Urdu</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <div class="btn btn-primary" id="user_submit">Sign In</div>
+                <div class="btn btn-clase"></div>
+             </tr>
+        </form>
+        <div class="btn btn-close" aria-label="close"></div>
+    </div> -->
+
+    
+
+    <!-- <div id="all_Content" style="width: auto; height: auto;"></div> -->
+    <main id="main">
+        <!-- Carousel -->
+        <div id="demo" class="carousel slide mt-1" data-bs-ride="carousel">
+
+            <!-- Indicators/dots -->
+            <div class="carousel-indicators" id="carousel-indicators">
+                <button title="first-slide" type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                <button title="second-slide" type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                <button title="third-slide" type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                <button title="fourth-slide" type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+                <button title="five-slide" type="button" data-bs-target="#demo" data-bs-slide-to="4"></button>
+            </div>
+         
+            <!-- The slideshow/carousel -->
+            <div class="carousel-inner" id="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://m.media-amazon.com/images/I/916VpzBGLaL._SX3000_.jpg" alt="slide-1" class="d-block>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://m.media-amazon.com/images/I/61Dr+oVuClL._SX3000_.jpg" 
+                        alt="slide-2" class="d-block"">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://m.media-amazon.com/images/I/61ERFXSIxGL._SX3000_.jpg"
+                    alt="slide-3" class="d-block">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://m.media-amazon.com/images/I/61xJkbCCroL._SX3000_.jpg" 
+                    alt="slide-4" class="d-block">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://m.media-amazon.com/images/I/81dechxRJEL._SX3000_.jpg" 
+                    alt="slide-5" class="d-block">
+                </div>
+            </div>
+        
+            <!-- Left and right controls/icons -->
+            <button title="pre-btn" class="carousel-control-prev" id="prev_btn" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                 <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button title="next-btn" class="carousel-control-next" id="next_btn" type="button" data-bs-target="#demo" data-bs-slide="next">
+                 <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+        <!-- 1st row or another line -->
+        <div class=" products mt-3">
+            <div class="row">
+                <!-- <div class="col-md-3 " id="navbarList" >
+                    <h5>Shop by Department</h5>
+                    <ul class="list-unstyled text-dark ">
+                        <li><a href="#">Amazon Devices</a></li>
+                        <li><a href="#">Electronics</a></li>
+                        <li><a href="#">Computers</a></li>
+                        <li><a href="#">Smart Home</a></li>
+                        <li><a href="#">Books</a></li>
+                        <li><a href="#">Clothing, Shoes & Jewelry</a></li>
+                        <li><a href="#">Home & Kitchen</a></li>
+                        <li><a href="#">Beauty & Personal Care</a></li>
+                        <li><a href="#">Health & Household</a></li>
+                        <li><a href="#">Toys & Games</a></li>
+                        <li><a href="#">Automotive</a></li>
+                        <li><a href="#">Sports & Outdoors</a></li>
+                        <li><a href="#">Pet Supplies</a></li>
+                        <li><a href="#">Garden & Outdoor</a></li>
+                    </ul>
+                </div> -->
+
+                
+                <div class="container col-lg me-1 bg-white border border-info">
+                    <div class="row">
+                        <p class="h3 p-3">Appliances for your home | Up to 55% off</p>
+                    </div>
+                    <div class="row mt-2"> 
+                        <div class="col-md-6 ">
+                            <figure class="figure">
+                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/Appliances-QC-PC-186x116--B08RDL6H79._SY116_CB667322346_.jpg"
+                                     class="figure-img img-fluid" alt="p1 image">
+                                <figcaption class="figcaption">Air Conditioner</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/Appliances-QC-PC-186x116--B08345R1ZW._SY116_CB667322346_.jpg"
+                                     class="figure-img img-fluid" alt="p1">
+                                <figcaption class="figcaption">Refrigeretor</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/Appliances-QC-PC-186x116--B07G5J5FYP._SY116_CB667322346_.jpg"
+                                     class="figure-img img-fluid" alt="p1">
+                                <figcaption class="figcaption">Microwaves</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/186x116---wm._SY116_CB667322346_.jpg" 
+                                     class="figure-img img-fluid" alt="p1">
+                                <figcaption class="figcaption">Washing Machine</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <footer class="container-fluid row">
+                        <a href="#" class="text-decoration-none text-dark h5">see more</a>
+                    </footer>
+                </div>
+
+                <div class="container col-lg bg-white mx-1 border border-info">
+                    <div class="row">
+                        <p class="h3 p-3">Up to 60% off | Styles for Women</p>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PC_WF/WF1-186-116._SY116_CB636048992_.jpg"
+                                 class="figure-img img-fluid" alt="p1">
+                                <figcaption class="figcaption">Casual Shirt</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PC_WF/WF2-186-116._SY116_CB636048992_.jpg" 
+                                     class="figure-img img-fluid" alt="p1">
+                                <figcaption class="figcaption">FootWears</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PC_WF/WF4-186-116._SY116_CB636048992_.jpg"
+                                     class="figure-img img-fluid" alt="p1">
+                                <figcaption class="figcaption">Watches</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PC_WF/WF3-186-116._SY116_CB636048992_.jpg"
+                                     class="figure-img img-fluid" alt="p1">
+                                <figcaption class="figcaption">Jewellery</figcaption>
+                            </figure>
+                        </div>
+                        <footer class="container row">
+                            <a href="#" class="text-decoration-none text-info h5">End of session safe</a>
+                        </footer>
+                    </div>
+                </div>
+
+                <div class="container col-lg bg-white mx-1 object-fit-cover border rounded border border-info">
+                    <div class="row">
+                        <p class="h3 p-3">Revamp your home in style At 599</p>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/186x116_Home_furnishings_2._SY116_CB584596691_.jpg" 
+                                     class="figure-img img-fluid" alt="p1">
+                                <figcaption class="figcaption">Home_furnishings</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/186x116_Home_decor_1._SY116_CB584596691_.jpg"
+                                     class="figure-img img-fluid" alt="p1">
+                                <figcaption class="figcaption">Home Lightning</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/186x116_Home_storage_1._SY116_CB584596691_.jpg"
+                                     class="figure-img img-fluid" alt="p1">
+                                <figcaption class="figcaption">Home Stroage</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/186x116_Home_lighting_2._SY116_CB584596691_.jpg"
+                                     class="figure-img img-fluid" alt="p1">
+                                <figcaption class="figcaption">Lighting Solution</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <footer class="container row">
+                        <a href="#" class="text-decoration-none text-succes h5">Explore All</a>
+                    </footer>
+                </div>
+
+                <div class="container col-lg bg-white ms-1 border border-info">
+                    <div class="row">
+                        <p class="h3 p-3">Starting from ₹99 | All your home </p>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/PB/March/Bikram/PC_QC_HOME_186_2._SY116_CB558389341_.jpg" 
+                                     class="figure-img img-fluid" alt="p1">
+                                <figcaption class="figcaption">Badsheets</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/PB/March/Bikram/PC_QC_HOME_186_3._SY116_CB558389341_.jpg"
+                                     class="figure-img img-fluid" alt="p1">
+                                <figcaption class="figcaption">Curtains</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PC-PFF/PFF-2-186-116._SY116_CB636055991_.jpg" 
+                                     class="figure-img img-fluid" alt="p1">
+                                <figcaption class="figcaption">Footware</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PC-PFF/PFF-3-186-116._SY116_CB636055991_.jpg"
+                                     class="figure-img img-fluid" alt="p1">
+                                <figcaption class="figcaption">Spins maps  more</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <footer class="container row">
+                        <a href="#" class="text-decoration-none text-info h5">Explore all</a>
+                    </footer>
+                </div>
+            </div>
+
+
+           <!-- 2nd row or another line -->
+            <div class="row mt-2">
+                    <div class="container col-lg me-1 bg-white border border-info">
+                        <div class="row">
+                            <p class="h3 p-3">Automotive essentials | Up to 60% off</p>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <figure class="figure">
+                                    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img17/Auto/2020/GW/PCQC/Glasscare1X._SY116_CB410830553_.jpg"
+                                         class="figure-img img-fluid" alt="p1">
+                                    <figcaption class="figcaption">Cleaning Accessories</figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-md-6">
+                                <figure class="figure">
+                                    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img17/Auto/2020/GW/PCQC/Vega_helmet_186x116._SY116_CB405090404_.jpg"
+                                         class="figure-img img-fluid" alt="p1">
+                                    <figcaption class="figcaption">Helmets </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+    
+    
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <figure class="figure">
+                                    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img17/Auto/2020/GW/PCQC/Vaccum1x._SY116_CB410830552_.jpg"
+                                         class="figure-img img-fluid" alt="p1">
+                                    <figcaption class="figcaption">Vaccume Cleaner</figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-md-6">
+                                <figure class="figure">
+                                    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img17/Auto/2020/GW/PCQC/Rim_tyrecare1x._SY116_CB410830552_.jpg" 
+                                         class="figure-img img-fluid" alt="p1">
+                                    <figcaption class="figcaption">Tyres and rims</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                        <footer class="container row">
+                            <a href="#" class="text-decoration-none text-warning h4">See All</a>
+                        </footer>
+                    </div>
+                    
+    
+                    <div class="container col-lg bg-white mx-1 border border-info">
+                        <div class="row">
+                            <p class="h3 p-3">Under ₹499 | Pocket-friendly fashion</p>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <figure class="figure">
+                                    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PC-PFF/PFF-1-186-116._SY116_CB636055991_.jpg"
+                                         class="figure-img img-fluid" alt="p1" ">
+                                    <figcaption class="figcaption">Clothes</figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-md-6">
+                                <figure class="figure">
+                                    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PC-PFF/PFF-3-186-116._SY116_CB636055991_.jpg" 
+                                         class="figure-img img-fluid" alt="p1">
+                                    <figcaption class="figcaption">Bagpacks</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+    
+    
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <figure class="figure">
+                                    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PC-PFF/PFF-2-186-116._SY116_CB636055991_.jpg" 
+                                         class="figure-img img-fluid" alt="p1">
+                                    <figcaption class="figcaption">Footwear </figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-md-6">
+                                <figure class="figure">
+                                    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PC-PFF/PFF-4-186-116._SY116_CB636055991_.jpg"
+                                         class="figure-img img-fluid" alt="p1">
+                                    <figcaption class="figcaption">View More</figcaption>
+                                </figure>
+                            </div>
+                            <footer class="container row">
+                                <a href="#" class="text-decoration-none text-success h4">End of session safe</a>
+                            </footer>
+                        </div>
+                    </div>
+                    
+    
+                    <div class="container col-lg bg-white mx-1 border border-info">
+                        <div class="row">
+                            <p class="h3 p-3" >Flat ₹50 cashback | Fruits & vegetables </p>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <figure class="figure">
+                                    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img18/Fresh/GW/BTF_QCs/Nov23/PC2/1x/AllSubcat_RC_PC_1x_01._SY116_CB573024744_.jpg"
+                                         class="figure-img img-fluid" alt="p1">
+                                    <figcaption class="figcaption">Fruits</figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-md-6">
+                                <figure class="figure">
+                                    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img18/Fresh/GW/BTF_QCs/Nov23/PC2/1x/AllSubcat_RC_PC_1x_02._SY116_CB573024744_.jpg" 
+                                         class="figure-img img-fluid" alt="p1">
+                                    <figcaption class="figcaption">Vegitables</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+    
+    
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <figure class="figure">
+                                    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img18/Fresh/GW/BTF_QCs/Nov23/PC2/1x/AllSubcat_RC_PC_1x_03._SY116_CB573024744_.jpg" 
+                                         class="figure-img img-fluid" alt="p1">
+                                    <figcaption class="figcaption">Session special</figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-md-6">
+                                <figure class="figure">
+                                    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img18/Fresh/GW/BTF_QCs/Nov23/PC2/1x/AllSubcat_RC_PC_1x_04._SY116_CB573024744_.jpg"
+                                         class="figure-img img-fluid" alt="p1">
+                                    <figcaption class="figcaption">Explore more</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                        <footer class="container row">
+                            <a href="#" class="text-decoration-none text-secondary h4">See More</a>
+                        </footer>
+                    </div>
+    
+    
+                    <div class="container col-lg bg-white ms-1 border border-info">
+                        <div class="row">
+                            <p class="h3 p-3">Playground Season-3 | Grand Finale | Streaming</p>
+                        </div>
+                        <div class="ratio ratio-4x3" >
+                            <iframe src="https://images-eu.ssl-images-amazon.com/images/G/31/img17/Home/AmazonTV/Playground/PC_CC/DeskCC-374x309_Playground-S3_V2_Without-callout._SY304_CB579798026_.jpg"
+                                    title="YouTube video image-fill" ></iframe>
+                        </div>
+                        <footer class="container row">
+                            <a href="#" class="text-decoration-none text-success h4">Watch more Free content</a>
+                        </footer>
+                    </div>
+                </div>
+        </div>
+        </div>
+    </main>
+    <section>
+    <div class="row container-fluid bg-white me-2 border p-2">
+        <div class="row p-2 h3">
+            <div class="col-md-8">Up to 70% off | Carpets, cushion covers & more from stores near you</div>
+            <p class="col-lg h4"><a href="#" class="text-decoration-none text-info">See all</a></p>
+        </div>
+        <div class="container-fluid">
+            <div class="row footproducts">
+                <div class="container col-md-2">
+                <img title="image" src="C:\Users\sourav ghosh\OneDrive\Desktop\flipkart photo\brutan-shoes.jpg">
+                <button type="button" class="btn btn-block bg-danger text-white">buy</button>
+            </div>
+            <div class="container col-md-2 ">
+                <img title="image" src="C:\Users\sourav ghosh\OneDrive\Desktop\flipkart photo\4k Tvs_No cost EMI.png">
+                <button type="button" class="btn btn-block bg-danger text-white">buy</button>
+            </div>
+            <div class="container col-md-2">
+                <img title="image" src="C:\Users\sourav ghosh\OneDrive\Desktop\flipkart photo\Vaccum cleaner.png">
+                <button type="button" class="btn btn-block bg-danger text-white">buy</button>
+            </div>
+            <div class="container col-md-2">
+                <img title="image" src="C:\Users\sourav ghosh\OneDrive\Desktop\flipkart photo\Bathroom hardware.png">
+                <button type="button" class="btn btn-block bg-danger text-white">buy</button>
+            </div>
+            <div class="container col-md-2">
+                <img title="image" src="C:\Users\sourav ghosh\OneDrive\Desktop\flipkart photo\brutan-shoes.jpg">
+                <button class="btn btn-block bg-danger text-white">buy</button>
+            </div>
+            <div class="container col-md-2">
+                <img title="image" src="C:\Users\sourav ghosh\OneDrive\Desktop\flipkart photo\sharee.jpg">
+                <button type="button" class="btn btn-block bg-danger text-white">buy</button>
+            </div>
+            
+            </div>
+        </div>
+    </div>
+    </section>    
+
+    <!-- ========================= SECTION ========================= -->
+    <section class="section-name padding-y bg-light mt-3">
+        <div class="container">
+            <div class="row mt-2">
+                <div class="col-md-5">
+                <h2>Download app From playstore</h2>
+                <p>Get an amazing app to make Your life easy</p>
+                </div>
+                
+                <div class="col-md-7 text-end">
+                <a title="link-to-play-store" href="#">
+                    <img title="image of-play-store" src="C:\Users\sourav ghosh\OneDrive\Desktop\flipkart photo\App_Store image.png" 
+                    width="300px" height="100">
+                </a>
+
+                </div>
+            </div> <!-- row.// -->
+        </div><!-- container // -->
+    </section>
+    <!-- ========================= SECTION END// ======================= -->
+    <!-- ========================= FOOTER ========================= -->
+    
+    <footer class="section-footer border-top bg-light">
+    <div class="container">
+    <section class="footer-top padding-y">
+    <div class="row">
+    <aside class="col-md col-6">
+    <h6 class="title">Brands</h6>
+    <ul class="list-unstyled">
+    <li> <a href="#">Puma</a></li>
+    <li> <a href="#">Reebok</a></li>
+    <li> <a href="#">Nike</a></li>
+    </ul>
+    </aside>
+    
+    <aside class="col-md col-6">
+        <h6 class="title">Company</h6>
+        <ul class="list-unstyled">
+            <li> <a href="#">About us</a></li>
+            <li> <a href="#">Career</a></li>
+            <li> <a href="#">Find a store</a></li>
+            <li> <a href="#">Rules and terms</a></li>
+            <li> <a href="#">Sitemap</a></li>
+        </ul>
+    </aside>
+    
+    <aside class="col-md col-6">
+        <h6 class="title">Help</h6>
+        <ul class="list-unstyled">
+            <li> <a href="#">Contact us</a></li>
+            <li> <a href="#">Money refund</a></li>
+            <li> <a href="#">Order status</a></li>
+            <li> <a href="#">Shipping info</a></li>
+            <li> <a href="#">Open dispute</a></li>
+        </ul>
+    </aside>
+    <aside class="col-md col-6">
+        <h6 class="title">Account</h6>
+        <ul class="list-unstyled">
+            <li> <a href="#"> User Login </a></li>
+            <li> <a href="#"> User register </a></li>
+            <li> <a href="#"> Account Setting </a></li>
+            <li> <a href="#"> My Orders </a></li>
+        </ul>
+    </aside>
+    <aside class="col-md">
+        <h6 class="title">Social</h6>
+        <ul class="list-unstyled">
+            <li><a href="#"> <i class="fab fa-facebook"></i> Facebook </a></li>
+            <li><a href="#"> <i class="fab fa-twitter"></i> Twitter </a></li>
+            <li><a href="#"> <i class="fab fa-instagram"></i> Instagram </a></li>
+            <li><a href="#"> <i class="fab fa-youtube"></i> Youtube </a></li>
+        </ul>
+    </aside>
+    </div>
+    </section> <!-- footer-top.// -->
+    
+     
+    
+    <section class="footer-bottom row">
+        <div class="col-md-2">
+            <p class="text-muted"> 2021 Company name </p>
+        </div>
+        <div class="col-md-8 text-md-center">
+            <span class="px-2">info@com</span>
+            <span class="px-2">+000-000-0000</span>
+            <span class="px-2">Street name 123, ABC</span>
+        </div>
+        <div class="col-md-2 text-md-end text-muted">
+            <i class="fab fa-lg fa-cc-visa"></i>
+            <i class="fab fa-lg fa-cc-paypal"></i>
+            <i class="fab fa-lg fa-cc-mastercard"></i>
+        </div>
+    </section>
+    </div><!-- //container -->
+    </footer>
+    <!-- ========================= FOOTER END // ========================= -->
+</div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    </body>
+</html>
